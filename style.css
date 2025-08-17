@@ -1,0 +1,199 @@
+/* ===== Reset & Base ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #0a0a0a;
+    color: #eee;
+    overflow-x: hidden;
+}
+
+/* ===== Header ===== */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(10, 10, 10, 0.85);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #b366ff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #b366ff;
+}
+
+.menu-btn {
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+    color: #b366ff;
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+    background: transparent;
+}
+
+.navbar a {
+    color: #eee;
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #b366ff;
+    transition: width 0.3s;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* Degradado suave y moderno */
+    background: linear-gradient(120deg, #2c003e, #5a0d8f, #b366ff, #8c33ff);
+    background-size: 300% 300%;
+    animation: gradientMove 20s ease infinite;
+    filter: blur(30px);
+    z-index: -1;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.hero h1 {
+    font-size: 5rem;
+    color: #fff;
+    text-shadow: 0 0 25px #b366ff, 0 0 50px #8c33ff, 0 0 100px #5a0d8f;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #b366ff, #8c33ff, #5a0d8f);
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.4s;
+    box-shadow: 0 0 20px rgba(180, 102, 255, 0.5);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(180, 102, 255, 0.8);
+}
+
+/* ===== Cards Section ===== */
+.cards-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 120px 20px 40px;
+    background-color: #0a0a0a;
+}
+
+.card {
+    background: rgba(26, 26, 26, 0.95);
+    margin: 20px;
+    padding: 25px;
+    border-radius: 15px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(180, 102, 255, 0.4);
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 40px rgba(180, 102, 255, 0.7);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    color: #b366ff;
+    text-shadow: 0 0 10px #b366ff;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* ===== Responsive ===== */
+@media screen and (max-width: 768px) {
+    .navbar {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        flex-direction: column;
+        width: 220px;
+        height: calc(100% - 60px);
+        background: rgba(10,10,10,0.95);
+        padding: 20px;
+        transition: 0.3s;
+        gap: 15px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .navbar.active {
+        right: 0;
+    }
+
+    .cards-section {
+        flex-direction: column;
+        align-items: center;
+    }
+}
